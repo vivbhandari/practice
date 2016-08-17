@@ -1,4 +1,4 @@
-package practice;
+package algorithms;
 
 import java.util.Arrays;
 
