@@ -35,29 +35,34 @@ public abstract class AbstractPiece implements Piece {
 	@Override
 	public boolean attackingKing(Piece[][] board, King king) {
 		boolean check = false;
-		int rowStart = Math.max(king.getCurrentX() - 1, 0);
-		int rowEnd = Math.min(king.getCurrentX() + 1, 7);
-		int colStart = Math.max(king.getCurrentY() - 1, 0);
-		int colEnd = Math.min(king.getCurrentY() + 1, 7);
+		int kingX = king.getCurrentX();
+		int kingY = king.getCurrentY();
+		int rowStart = Math.max(kingX - 1, 0);
+		int rowEnd = Math.min(kingX + 1, 7);
+		int colStart = Math.max(kingY - 1, 0);
+		int colEnd = Math.min(kingY + 1, 7);
 
 		for (int row = rowStart; row <= rowEnd; row++) {
 			for (int col = colStart; col <= colEnd; col++) {
-				// temporarily move king to this position 
 				Piece piece = board[row][col];
-				board[row][col] = king;
-				board[king.getCurrentX()][king.getCurrentY()] = null;
-				if (isValidMove(board, row, col)) {
-					int gridX = row - king.getCurrentX() + 1;
-					int gridY = col - king.getCurrentY() + 1;
-					int bitNumber = gridX * 3 + gridY % 3;
-					king.getCheckBitSet().clear(bitNumber);
-					if (row == king.getCurrentX() && col == king.getCurrentY()) {
-						check = true;
+				if (piece == null || piece.getColor() != king.getColor()
+						|| piece == king) {
+					// temporarily move king to this position
+					board[row][col] = king;
+					board[kingX][kingY] = null;
+					if ((curX != row || curY != col) && isValidMove(board, row, col)) {
+						int gridX = row - kingX + 1;
+						int gridY = col - kingY + 1;
+						int bitNumber = gridX * 3 + gridY % 3;
+						king.getCheckBitSet().clear(bitNumber);
+						if (row == kingX && col == kingY) {
+							check = true;
+						}
 					}
+					// move the king back to original position
+					board[kingX][kingY] = king;
+					board[row][col] = piece;
 				}
-				// move the king back to original position
-				board[king.getCurrentX()][king.getCurrentY()] = king;
-				board[row][col] = piece;
 			}
 		}
 
@@ -65,38 +70,40 @@ public abstract class AbstractPiece implements Piece {
 	}
 
 	private boolean rookCanSave(Piece[][] board, King king, Piece attackingPiece) {
-		int nextX = attackingPiece.getCurrentX();
-		int nextY = attackingPiece.getCurrentY();
+		int attackingX = attackingPiece.getCurrentX();
+		int attackingY = attackingPiece.getCurrentY();
+		int kingX = king.getCurrentX();
+		int kingY = king.getCurrentY();
 		boolean canSave = false;
-		if (king.getCurrentX() == nextX) {
-			int i = king.getCurrentY();
-			if (nextY > king.getCurrentY()) {
-				while (++i <= nextY) {
-					if (isValidMove(board, nextX, i)) {
+		if (kingX == attackingX) {
+			int blockingY = kingY;
+			if (attackingY > kingY) {
+				while (++blockingY <= attackingY) {
+					if (isValidMove(board, attackingX, blockingY)) {
 						canSave = true;
 						break;
 					}
 				}
 			} else {
-				while (--i >= nextY) {
-					if (isValidMove(board, nextX, i)) {
+				while (--blockingY >= attackingY) {
+					if (isValidMove(board, attackingX, blockingY)) {
 						canSave = true;
 						break;
 					}
 				}
 			}
-		} else if (king.getCurrentY() == nextY) {
-			int i = king.getCurrentX();
-			if (nextX > king.getCurrentX()) {
-				while (++i <= nextX) {
-					if (isValidMove(board, i, nextY)) {
+		} else if (kingY == attackingY) {
+			int blockingX = kingX;
+			if (attackingX > king.getCurrentX()) {
+				while (++blockingX <= attackingX) {
+					if (isValidMove(board, blockingX, attackingY)) {
 						canSave = true;
 						break;
 					}
 				}
 			} else {
-				while (--i >= nextX) {
-					if (isValidMove(board, i, nextX)) {
+				while (--blockingX >= attackingX) {
+					if (isValidMove(board, blockingX, attackingX)) {
 						canSave = true;
 						break;
 					}
@@ -108,38 +115,39 @@ public abstract class AbstractPiece implements Piece {
 
 	private boolean bishopCanSave(Piece[][] board, King king,
 			Piece attackingPiece) {
-		int nextX = attackingPiece.getCurrentX();
-		int nextY = attackingPiece.getCurrentY();
+		int attackingX = attackingPiece.getCurrentX();
+		int attackingY = attackingPiece.getCurrentY();
+		int kingX = king.getCurrentX();
+		int kingY = king.getCurrentY();
 		boolean canSave = false;
 
-		if (Math.abs(nextX - king.getCurrentX()) == Math.abs(nextY
-				- king.getCurrentY())) {
-			int i = curX;
-			int j = curY;
-			if (nextX > curX && nextY > curY) {
-				while (++i <= nextX && ++j <= nextY) {
-					if (isValidMove(board, i, j)) {
+		if (Math.abs(attackingX - kingX) == Math.abs(attackingY - kingY)) {
+			int blockingX = kingX;
+			int blockingY = kingY;
+			if (attackingX > kingX && attackingY > kingY) {
+				while (++blockingX <= attackingX && ++blockingY <= attackingY) {
+					if (isValidMove(board, blockingX, blockingY)) {
 						canSave = true;
 						break;
 					}
 				}
-			} else if (nextX > curX && nextY < curY) {
-				while (++i <= nextX && --j >= nextY) {
-					if (isValidMove(board, i, j)) {
+			} else if (attackingX > kingX && attackingY < kingY) {
+				while (++blockingX <= attackingX && --blockingY >= attackingY) {
+					if (isValidMove(board, blockingX, blockingY)) {
 						canSave = true;
 						break;
 					}
 				}
-			} else if (nextX < curX && nextY < curY) {
-				while (--i >= nextX && --j >= nextY) {
-					if (isValidMove(board, i, j)) {
+			} else if (attackingX < kingX && attackingY < kingY) {
+				while (--blockingX >= attackingX && --blockingY >= attackingY) {
+					if (isValidMove(board, blockingX, blockingY)) {
 						canSave = true;
 						break;
 					}
 				}
-			} else if (nextX < curX && nextY > curY) {
-				while (--i >= nextX && ++j <= nextY) {
-					if (isValidMove(board, i, j)) {
+			} else if (attackingX < kingX && attackingY > kingY) {
+				while (--blockingX >= attackingX && ++blockingY <= attackingY) {
+					if (isValidMove(board, blockingX, blockingY)) {
 						canSave = true;
 						break;
 					}
