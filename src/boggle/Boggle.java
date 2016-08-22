@@ -54,16 +54,16 @@ public class Boggle {
 	}
 
 	public static void main(String args[]) {
-		char[][] board = new char[][] { { 'G', 'I', 'Z', 'N' },
-				{ 'U', 'E', 'S', 'O' }, { 'Q', 'E', 'K', 'L' },
-				{ 'N', 'H', 'E', 'L' }, { 'O', 'T', 'I', 'M' } };
+//		char[][] board = new char[][] { { 'G', 'I', 'Z', 'N' },
+//				{ 'U', 'E', 'S', 'O' }, { 'Q', 'E', 'K', 'L' },
+//				{ 'N', 'H', 'E', 'L' }, { 'O', 'T', 'I', 'M' } };
 
 		// char[][] board = new char[][] { { 'G', 'I', 'Z', 'N' },
 		// { 'U', 'E', 'S', 'O' }, { 'Q', 'E', 'K', 'L' },
 		// { 'N', 'H', 'E', 'L' } };
 
-		// char[][] board = new char[][] { { 'G', 'I', 'Z' }, { 'U', 'E', 'S' },
-		// { 'Q', 'E', 'K' } };
+		char[][] board = new char[][] { { 'G', 'I', 'Z' }, { 'U', 'E', 'S' },
+				{ 'Q', 'E', 'K' } };
 		HashSet<String> dictionary = new HashSet<String>(
 				Arrays.asList(new String[] { "GEEK", "QUIZ", "HELLO", "SEEK",
 						"SON", "SEEN", "THEN", "NOT", "HOT", "HELL", "NOTE",
