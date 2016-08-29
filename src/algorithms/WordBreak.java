@@ -27,11 +27,11 @@ public class WordBreak {
 	public static void main(String args[]) {
 		HashSet<String> dictionary = new HashSet<String>(
 				Arrays.asList(new String[] { "i", "like", "samsung", "sam",
-						"sung" }));
+						"sung1" }));
 		System.out.println(dictionary);
 		List<String> output = new ArrayList<String>();
 		boolean result = wordBreak("ilikesamsung", dictionary, output);
 		System.out.println(result);
-		System.out.println(output);
+		System.out.println(String.join(" ", output));
 	}
 }

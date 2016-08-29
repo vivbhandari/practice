@@ -12,17 +12,17 @@ public class MaxConsecutiveIntegers {
 		for (int i : input) {
 			inputSet.add(i);
 		}
-		int curCount = 0;
+		int curCount = 1;
 		for (int i : inputSet) {
 			if (!inputSet.contains(i - 1)) {
-				while (inputSet.contains(i++)) {
+				while (inputSet.contains(++i)) {
 					curCount++;
 				}
 				if (curCount > count) {
 					count = curCount;
 				}
 			}
-			curCount = 0;
+			curCount = 1;
 		}
 
 		return count;
