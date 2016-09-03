@@ -11,7 +11,7 @@ public class TestHashTable {
 				5);
 		System.out.println(hashtable);
 		for (int i = 0; i < 8; i++) {
-			hashtable.put(i, i*i);
+			hashtable.put(i, i * i);
 			System.out.println(hashtable);
 		}
 		hashtable.put(0, -1);
@@ -20,6 +20,14 @@ public class TestHashTable {
 		for (int i = 0; i < 8; i++) {
 			System.out.println(hashtable.get(i));
 		}
+		System.out.println(hashtable);
+		hashtable.resize(6);
+		System.out.println(hashtable);
+		hashtable.resize(4);
+		System.out.println(hashtable);
+		System.out.println(hashtable.remove(7));
+		System.out.println(hashtable.remove(4));
+		System.out.println(hashtable.remove(4));
 		System.out.println(hashtable);
 	}
 

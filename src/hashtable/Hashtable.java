@@ -2,6 +2,7 @@ package hashtable;
 
 import java.util.Arrays;
 
+@SuppressWarnings("unchecked")
 public class Hashtable<K, V> {
 
 	private int Size;
@@ -21,7 +22,27 @@ public class Hashtable<K, V> {
 		return hashCode % Size;
 	}
 
+	public void resize(int newSize) {
+		Size = newSize;
+		HashNode<K, V>[] origTable = table;
+		table = new HashNode[newSize];
+
+		for (HashNode<K, V> hashNode : origTable) {
+			while (hashNode != null) {
+				HashNode<K, V> nextNode = hashNode.getNextNode();
+				hashNode.setNextNode(null);
+				put(hashNode);
+				hashNode = nextNode;
+			}
+		}
+	}
+
 	public void put(K key, V value) {
+		put(new HashNode<K, V>(key, value, null));
+	}
+
+	public void put(HashNode<K, V> newNode) {
+		K key = newNode.getKey();
 		int hashCode = key.hashCode();
 		int bucket = getBucket(hashCode);
 
@@ -30,14 +51,15 @@ public class Hashtable<K, V> {
 		while (hashNode != null) {
 			if (hashNode.getKey() == key) {
 				System.out.println("key already exist: " + key);
-				hashNode.setValue(value);
+				hashNode.setValue(newNode.getValue());
 				return;
 			} else {
 				hashNode = hashNode.getNextNode();
 			}
 		}
 
-		table[bucket] = new HashNode<K, V>(key, value, table[bucket]);
+		newNode.setNextNode(table[bucket]);
+		table[bucket] = newNode;
 	}
 
 	public V get(K key) {
@@ -51,6 +73,30 @@ public class Hashtable<K, V> {
 				value = hashNode.getValue();
 				break;
 			} else {
+				hashNode = hashNode.getNextNode();
+			}
+		}
+		return value;
+	}
+
+	public V remove(K key) {
+		int hashCode = key.hashCode();
+		int bucket = getBucket(hashCode);
+		V value = null;
+		HashNode<K, V> hashNode = table[bucket];
+		HashNode<K, V> prevNode = null;
+
+		while (hashNode != null) {
+			if (hashNode.getKey() == key) {
+				value = hashNode.getValue();
+				if (prevNode == null) {
+					table[bucket] = hashNode.getNextNode();
+				} else {
+					prevNode.setNextNode(hashNode.getNextNode());
+				}
+				break;
+			} else {
+				prevNode = hashNode;
 				hashNode = hashNode.getNextNode();
 			}
 		}
