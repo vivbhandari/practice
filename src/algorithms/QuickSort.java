@@ -49,11 +49,42 @@ public class QuickSort {
 	}
 
 	public static void quickSort(int[] input) {
-		quickSortRecurse(input, 0, input.length - 1);
+		//quickSortRecurse(input, 0, input.length - 1);
+		quickSortRecurse2(input, 0, input.length - 1);
+	}
+
+	// this is simpler
+	public static void quickSortRecurse2(int[] input, int start, int end) {
+
+		if (start >= end) {
+			return;
+		}
+
+		int pivotIndex = start + (end - start) / 2;
+		System.out.println("pivotIndex=" + pivotIndex);
+
+		int index1 = start;
+		int index2 = end;
+
+		while (index1 <= index2) {
+
+			while (input[index1] < input[pivotIndex])
+				index1++;
+
+			while (input[index2] > input[pivotIndex])
+				index2--;
+
+			if (index1 <= index2) {
+				swap(input, index1++, index2--);
+			}
+			System.out.println(Arrays.toString(input));
+		}
+		quickSortRecurse2(input, start, index2);
+		quickSortRecurse2(input, index1, end);
 	}
 
 	public static void main(String args[]) {
-		int[] input = new int[] { 7, 6, 2, 5, 4, 0, 8, 1, 3 };
+		int[] input = new int[] { 7, 6, 2, 8, 5, 0, 4, 1, 3 };
 		System.out.println(Arrays.toString(input));
 		quickSort(input);
 		// System.out.println(Arrays.toString(input));
