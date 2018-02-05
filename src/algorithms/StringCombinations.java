@@ -44,7 +44,7 @@ public class StringCombinations {
 	}
 
 	private static String getString(Set<Character> output) {
-		String result = "";
+		String result = ""; 
 		for (char c : output) {
 			result += c;
 		}

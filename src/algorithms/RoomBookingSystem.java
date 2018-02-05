@@ -1,6 +1,7 @@
 package algorithms;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -117,6 +118,5 @@ public class RoomBookingSystem {
 		roomBookingSystem.addBooking(availableRooms.get(0), 2, start, end);
 		availableRooms = roomBookingSystem.getAvaiableRooms(2, start, end);
 		System.out.println(availableRooms);
-
 	}
 }

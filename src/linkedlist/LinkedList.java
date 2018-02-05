@@ -63,6 +63,7 @@ public class LinkedList {
 
 	@Override
 	public String toString() {
-		return "LinkedList [head=" + head + "]";
+		return "LinkedList [" + head + "]";
+//		return "LinkedList [head=" + head + "]";
 	}
 }

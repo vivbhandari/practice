@@ -3,32 +3,29 @@ package algorithms;
 public class MagicOf3 {
 
 	public static void findNumberOfOnes(int number) {
-		int i = 1;
-		int m = 1;
-		while (i < Integer.MAX_VALUE) {
-			if (m == 0) {
-				break;
-			} else {
-				m = (10 * m + 1) % number;
-				i++;
-			}
+		int count = 1;
+		int remainder = 1;
+		while (count < Integer.MAX_VALUE && remainder != 0) {
+			remainder = (10 * remainder + 1) % number;
+			count++;
 		}
-		for (int j = 0; j < i; j++)
+
+		while (count-- > 0)
 			System.out.print("1");
 	}
 
 	public static void main(String args[]) {
-		findNumberOfOnes(131313);
+		findNumberOfOnes(1313);
 	}
 }
 
-/*
-  r(0, n) = 1 % n
-  r(1, n) = 11 % n
-  r(i, n) = m(i) % n
-  r(i+1, n) = m(i+1)  % n
-  => (10 * m(i) + 1) % n
-  => (10 * m(i) % n + 1 % n) % n
-  => (10 * r(i) + 1) % n 
- */
-
+/*******
+  rem(1, num) = 1 % num 
+  rem(2, num) = 11 % num 
+  rem(3, num) = 111 % num 
+  rem(i, num) = m(i) % num 
+  rem(i+1, num) = m(i+1) % num
+    => (10 * m(i) + 1) % num
+    => (10 * m(i) % num + 1 % num) % num
+    => (10 * rem(i) + 1) % num
+ ******/

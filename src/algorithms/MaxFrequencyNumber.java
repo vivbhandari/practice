@@ -34,7 +34,6 @@ public class MaxFrequencyNumber {
 		System.out.println("input=" + Arrays.toString(input));
 
 		System.out.println(input[maxFreqIndex] + ":" + frequency);
-
 	}
 
 	public static void main(String args[]) {

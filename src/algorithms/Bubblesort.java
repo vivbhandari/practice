@@ -6,9 +6,9 @@ public class Bubblesort {
 
 	public static void bubbleSort(int[] input) {
 
-		boolean swapped = false;
+		boolean swapped = true;
 
-		while (!swapped) {
+		while (swapped) {
 			swapped = false;
 			for (int i = 1; i < input.length; i++) {
 				if (input[i - 1] > input[i]) {
@@ -18,6 +18,7 @@ public class Bubblesort {
 					swapped = true;
 				}
 			}
+			System.out.println(Arrays.toString(input));
 		}
 	}
 
