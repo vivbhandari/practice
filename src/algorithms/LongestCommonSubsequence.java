@@ -1,36 +1,34 @@
 package algorithms;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 
 public class LongestCommonSubsequence {
 
-	public static boolean isPrevCharSame(
-			HashMap<Character, List<Integer>> bIndex, String a, int j) {
-		for (int curChIndx : bIndex.get(a.charAt(j))) {
-			for (int prevChIndx : bIndex.get(a.charAt(j - 1))) {
-				if (curChIndx == prevChIndx + 1) {
-					return true;
-				}
-			}
+	public static boolean isPrevCharSame(HashMap<Character, HashSet<Integer>> bIndex, String a,
+			int j) {
+		HashSet<Integer> curCharIndices = bIndex.get(a.charAt(j));
+		for (int prevCharIndx : bIndex.get(a.charAt(j - 1))) {
+			if (curCharIndices.contains(prevCharIndx + 1))
+				return true;
 		}
+
 		return false;
 	}
 
 	public static String findSubSequence(String a, String b) {
 		String subSequence = "";
-		HashMap<Character, List<Integer>> bIndex = new HashMap<Character, List<Integer>>();
+		HashMap<Character, HashSet<Integer>> bIndex = new HashMap<Character, HashSet<Integer>>();
 		int count = 0;
 
 		for (int i = 0; i < b.length(); i++) {
 			char ch = b.charAt(i);
-			List<Integer> list = bIndex.get(ch);
-			if (list == null) {
-				list = new ArrayList<Integer>();
-				bIndex.put(ch, list);
+			HashSet<Integer> set = bIndex.get(ch);
+			if (set == null) {
+				set = new HashSet<Integer>();
+				bIndex.put(ch, set);
 			}
-			list.add(i);
+			set.add(i);
 		}
 		System.out.println("bIndex=" + bIndex);
 
@@ -63,9 +61,7 @@ public class LongestCommonSubsequence {
 
 		for (int j = 0; j < a.length(); j++) {
 			if (bIndex.containsKey(a.charAt(j))) {
-				if (count != 0
-						&& bIndex.get(a.charAt(j)) == bIndex.get(a
-								.charAt(j - 1)) + 1) {
+				if (count != 0 && bIndex.get(a.charAt(j)) == bIndex.get(a.charAt(j - 1)) + 1) {
 					++count;
 				} else {
 					count = 1;

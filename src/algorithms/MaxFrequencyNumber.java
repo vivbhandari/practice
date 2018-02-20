@@ -26,15 +26,14 @@ public class MaxFrequencyNumber {
 			input[input[i] % k] += k;
 		}
 		System.out.println("input=" + Arrays.toString(input));
-		int maxFreqIndex = findMaxIndex(input);
-		int frequency = input[maxFreqIndex] / k;
+		int maxFreqNumber = findMaxIndex(input);
+		int frequency = input[maxFreqNumber] / k;
 		for (int i = 0; i < input.length; i++) {
 			input[i] = input[i] % k;
 		}
 		System.out.println("input=" + Arrays.toString(input));
 
-		System.out.println(maxFreqIndex + ":" + frequency);
-
+		System.out.println(maxFreqNumber + ":" + frequency);
 	}
 
 	public static void main(String args[]) {

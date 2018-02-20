@@ -95,7 +95,9 @@ public class MinCostPathInMatrix {
 	}
 
 	public static void main(String args[]) {
-		int[][] costMatrix = { { 4, 5, 6 }, { 1, 1, 3 }, { 0, 1, 2 } };
+		int[][] costMatrix = { { 4, 5, 6 }, 
+							   { 1, 1, 3 }, 
+							   { 0, 1, 2 } };
 		iterations = 0;
 		System.out.println("answer=" + findLeastcost(costMatrix));
 		System.out.println("iterations=" + iterations);

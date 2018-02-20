@@ -16,6 +16,7 @@ public class LinkedNode {
 
 	@Override
 	public String toString() {
-		return "LinkedNode [value=" + value + ", nextNode=" + nextNode + "]";
+		return value + "=>" + nextNode;
+//		return "LinkedNode [value=" + value + ", nextNode=" + nextNode + "]";
 	}
 }

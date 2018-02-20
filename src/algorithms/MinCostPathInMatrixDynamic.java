@@ -53,7 +53,9 @@ public class MinCostPathInMatrixDynamic {
 	static int iterations = 0;
 
 	public static void main(String args[]) {
-		int[][] costMatrix = { { 4, 5, 6 }, { 1, 1, 3 }, { 0, 1, 2 }, };
+		int[][] costMatrix = { { 4, 5, 6 }, 
+				               { 1, 1, 3 }, 
+				               { 0, 1, 2 }, };
 		// int[][] costMatrix = { { 4, 5, 6 }, { 1, 1, 3 }, { 0, 1, 2 },
 		// { 3, 1, 2 } };
 		iterations = 0;

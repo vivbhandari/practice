@@ -19,6 +19,7 @@ public class Bubblesort {
 					System.out.println(Arrays.toString(input));
 				}
 			}
+			System.out.println(Arrays.toString(input));
 		}
 	}
 
