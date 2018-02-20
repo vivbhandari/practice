@@ -64,6 +64,7 @@ public class MinimumNumberOfSwaps {
 		System.out.println(getMinimumNumOfSwaps("abc", "cab"));
 		System.out.println(getMinimumNumOfSwaps("abcd", "dcba"));
 		System.out.println(getMinimumNumOfSwaps("abcd", "dabc"));
+		System.out.println(getMinimumNumOfSwaps("abcde", "cdeab"));
 	}
 
 }

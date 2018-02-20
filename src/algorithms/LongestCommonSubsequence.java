@@ -7,9 +7,9 @@ public class LongestCommonSubsequence {
 
 	public static boolean isPrevCharSame(HashMap<Character, HashSet<Integer>> bIndex, String a,
 			int j) {
-		HashSet<Integer> curchIndices = bIndex.get(a.charAt(j));
-		for (int prevChIndx : bIndex.get(a.charAt(j - 1))) {
-			if (curchIndices.contains(prevChIndx + 1))
+		HashSet<Integer> curCharIndices = bIndex.get(a.charAt(j));
+		for (int prevCharIndx : bIndex.get(a.charAt(j - 1))) {
+			if (curCharIndices.contains(prevCharIndx + 1))
 				return true;
 		}
 
