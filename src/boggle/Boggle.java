@@ -62,7 +62,9 @@ public class Boggle {
 		// { 'U', 'E', 'S', 'O' }, { 'Q', 'E', 'K', 'L' },
 		// { 'N', 'H', 'E', 'L' } };
 
-		char[][] board = new char[][] { { 'G', 'I', 'Z' }, { 'U', 'E', 'S' },
+		char[][] board = new char[][] { 
+				{ 'G', 'I', 'Z' }, 
+				{ 'U', 'E', 'S' },
 				{ 'Q', 'E', 'K' } };
 		HashSet<String> dictionary = new HashSet<String>(
 				Arrays.asList(new String[] { "GEEK", "QUIZ", "HELLO", "SEEK",

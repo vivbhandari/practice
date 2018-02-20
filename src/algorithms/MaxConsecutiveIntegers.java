@@ -12,8 +12,8 @@ public class MaxConsecutiveIntegers {
 		for (int i : input) {
 			inputSet.add(i);
 		}
-		int curCount = 1;
 		for (int i : inputSet) {
+			int curCount = 1;
 			if (!inputSet.contains(i - 1)) {
 				while (inputSet.contains(++i)) {
 					curCount++;
@@ -22,7 +22,6 @@ public class MaxConsecutiveIntegers {
 					count = curCount;
 				}
 			}
-			curCount = 1;
 		}
 
 		return count;
@@ -33,7 +32,7 @@ public class MaxConsecutiveIntegers {
 
 		Arrays.sort(input);
 		int curCount = 0;
-		int prev = -1;
+		int prev = Integer.MIN_VALUE;
 		for (int i : input) {
 			if (curCount != 0 && prev == i - 1) {
 				curCount++;

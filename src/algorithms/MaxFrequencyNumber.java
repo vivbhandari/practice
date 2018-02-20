@@ -33,12 +33,12 @@ public class MaxFrequencyNumber {
 		}
 		System.out.println("input=" + Arrays.toString(input));
 
-		System.out.println(input[maxFreqIndex] + ":" + frequency);
+		System.out.println(maxFreqIndex + ":" + frequency);
 
 	}
 
 	public static void main(String args[]) {
-		int input[] = { 1, 2, 2, 2, 0, 2, 0, 2, 3, 8, 0, 9, 2, 11 };
+		int input[] = { 1, 2, 1, 2, 0, 2, 0, 2, 3, 8, 0, 9, 2, 11 };
 		findGreatestNumber(input);
 	}
 }

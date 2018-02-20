@@ -25,9 +25,16 @@ public class Graph {
 		graphNode2.neighbors.remove(graphNode1);
 	}
 
+//	public void deleteNode(String value) {
+//		GraphNode removedNode = nodeMap.remove(value);
+//		for (GraphNode node : nodeMap.values()) {
+//			node.neighbors.remove(removedNode);
+//		}
+//	}
+
 	public void deleteNode(String value) {
 		GraphNode removedNode = nodeMap.remove(value);
-		for (GraphNode node : nodeMap.values()) {
+		for (GraphNode node : removedNode.neighbors) {
 			node.neighbors.remove(removedNode);
 		}
 	}

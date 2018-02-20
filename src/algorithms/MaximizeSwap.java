@@ -39,6 +39,6 @@ public class MaximizeSwap {
 
 	public static void main(String args[]) {
 		int[] input = { 2, 5, 1, 9, 3, 7, 2, 8, 9 };
-		swapToMaxValue(input, 7);
+		swapToMaxValue(input, 8);
 	}
 }
