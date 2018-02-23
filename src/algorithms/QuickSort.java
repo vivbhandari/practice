@@ -49,7 +49,7 @@ public class QuickSort {
 	}
 
 	public static void quickSort(int[] input) {
-		//quickSortRecurse(input, 0, input.length - 1);
+		// quickSortRecurse(input, 0, input.length - 1);
 		quickSortRecurse2(input, 0, input.length - 1);
 	}
 
@@ -66,7 +66,7 @@ public class QuickSort {
 		int index1 = start;
 		int index2 = end;
 
-		while (index1 <= index2) {
+		while (index1 < index2) {
 
 			while (input[index1] < input[pivotIndex])
 				index1++;
@@ -74,9 +74,12 @@ public class QuickSort {
 			while (input[index2] > input[pivotIndex])
 				index2--;
 
-			if (index1 <= index2) {
-				swap(input, index1++, index2--);
+			if (index1 < index2) {
+				swap(input, index1, index2);
 			}
+
+			index1++;
+			index2--;
 			System.out.println(Arrays.toString(input));
 		}
 		quickSortRecurse2(input, start, index2);
