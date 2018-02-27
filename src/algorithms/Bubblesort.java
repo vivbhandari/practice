@@ -16,6 +16,7 @@ public class Bubblesort {
 					input[i] = input[i - 1];
 					input[i - 1] = tmp;
 					swapped = true;
+					System.out.println(Arrays.toString(input));
 				}
 			}
 			System.out.println(Arrays.toString(input));

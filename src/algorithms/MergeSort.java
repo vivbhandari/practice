@@ -42,6 +42,40 @@ public class MergeSort {
 		return merged;
 	}
 
+	public static void mergeSort_arrayIndex(int[] input, int start, int end) {
+
+		if (start < end) {
+			int middleIndex = (start + end) / 2;
+			mergeSort_arrayIndex(input, start, middleIndex);
+			mergeSort_arrayIndex(input, middleIndex + 1, end);
+			merge_arrayIndex(input, start, middleIndex, end);
+		}
+	}
+
+	public static void merge_arrayIndex(int[] input, int start,
+			int middleIndex, int end) {
+
+		int array1[] = Arrays.copyOfRange(input, start, middleIndex + 1);
+		int array2[] = Arrays.copyOfRange(input, middleIndex + 1, end + 1);
+		int index1 = 0;
+		int index2 = 0;
+
+		while (index1 < array1.length && index2 < array2.length) {
+			if (array1[index1] < array2[index2]) {
+				input[start++] = array1[index1++];
+			} else {
+				input[start++] = array2[index2++];
+			}
+		}
+		while (index1 < array1.length) {
+			input[start++] = array1[index1++];
+		}
+
+		while (index2 < array2.length) {
+			input[start++] = array2[index2++];
+		}
+	}
+
 	public static int[] mergeSort_arrayCopy(int[] input) {
 
 		if (input.length <= 1) {
@@ -126,14 +160,19 @@ public class MergeSort {
 	public static void main(String args[]) {
 		int[] input = new int[] { 4, 2, 6, 3, 5, 7, 1, 8 };
 		mergeSort_arrayInPlace(input, 0, input.length - 1);
-		System.out.println("result=" + Arrays.toString(input));
+		System.out.println("result1=" + Arrays.toString(input));
 
 		input = new int[] { 4, 2, 6, 3, 5, 7, 1, 8 };
 		input = mergeSort_arrayCopy(input);
-		System.out.println("result=" + Arrays.toString(input));
+		System.out.println("result2=" + Arrays.toString(input));
 
-		System.out.println("result="
+		System.out.println("result3="
 				+ mergeSort_list(Arrays.asList(new Integer[] { 4, 2, 6, 3, 5,
 						7, 1, 8 })));
+
+		input = new int[] { 4, 2, 6, 3, 5, 7, 1, 8 };
+		mergeSort_arrayIndex(input, 0, 7);
+		System.out.println("result4=" + Arrays.toString(input));
 	}
+
 }

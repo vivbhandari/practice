@@ -3,8 +3,8 @@ package algorithms;
 public class MagicOf3 {
 
 	public static void findNumberOfOnes(int number) {
-		int count = 1;
-		int remainder = 1;
+		int count = 1; // number of 1s so far
+		int remainder = 1; // 1 % number
 		while (count < Integer.MAX_VALUE && remainder != 0) {
 			remainder = (10 * remainder + 1) % number;
 			count++;
