@@ -23,7 +23,6 @@ public class RabinKarpPatternSearch {
 
 		for (int i = 0; i <= textLen - patLen; i++) {
 			if (textHash == patHash) {
-
 				int j;
 				for (j = 0; j < patLen; j++) {
 					if (text.charAt(i + j) != pattern.charAt(j))
