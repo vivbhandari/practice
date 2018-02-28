@@ -8,14 +8,16 @@ public class TestGraph {
 	private static void calculateDFSOrderRecurse(Graph graph,
 			String currentNodeValue, List<String> dfsOrder) {
 		dfsOrder.add(currentNodeValue);
-		for (GraphNode neighbor : graph.nodeMap.get(currentNodeValue).neighbors) {
+		for (GraphNode neighbor : graph.nodeMap.get(currentNodeValue).neighbors
+				.keySet()) {
 			if (!dfsOrder.contains(neighbor.value)) {
 				calculateDFSOrderRecurse(graph, neighbor.value, dfsOrder);
 			}
 		}
 	}
 
-	public static List<String> getDFSOrderRecurse(Graph graph, String startNode) {
+	public static List<String> getDFSOrderRecurse(Graph graph,
+			String startNode) {
 		List<String> dfsOrder = new ArrayList<String>();
 		calculateDFSOrderRecurse(graph, startNode, dfsOrder);
 		return dfsOrder;
@@ -33,7 +35,8 @@ public class TestGraph {
 				dfsOrder.add(currentNodeValue);
 
 				int i = 0;
-				for (GraphNode neighbor : graph.nodeMap.get(currentNodeValue).neighbors) {
+				for (GraphNode neighbor : graph.nodeMap
+						.get(currentNodeValue).neighbors.keySet()) {
 					if (!dfsOrder.contains(neighbor.value)) {
 						toBeProcessed.add(i++, neighbor.value);
 					}
@@ -48,7 +51,8 @@ public class TestGraph {
 			List<String> bfsOrder) {
 		if (currentIndex < bfsOrder.size()) {
 			String currentNodeValue = bfsOrder.get(currentIndex);
-			for (GraphNode neighbor : graph.nodeMap.get(currentNodeValue).neighbors) {
+			for (GraphNode neighbor : graph.nodeMap
+					.get(currentNodeValue).neighbors.keySet()) {
 				if (!bfsOrder.contains(neighbor.value)) {
 					bfsOrder.add(neighbor.value);
 				}
@@ -57,7 +61,8 @@ public class TestGraph {
 		}
 	}
 
-	public static List<String> getBFSOrderRecurse(Graph graph, String startNode) {
+	public static List<String> getBFSOrderRecurse(Graph graph,
+			String startNode) {
 		List<String> bfsOrder = new ArrayList<String>();
 		bfsOrder.add(startNode);
 		calculateBFSOrderRecurse(graph, 0, bfsOrder);
@@ -75,7 +80,8 @@ public class TestGraph {
 			if (!bfsOrder.contains(currentNodeValue)) {
 				bfsOrder.add(currentNodeValue);
 
-				for (GraphNode neighbor : graph.nodeMap.get(currentNodeValue).neighbors) {
+				for (GraphNode neighbor : graph.nodeMap
+						.get(currentNodeValue).neighbors.keySet()) {
 					if (!bfsOrder.contains(neighbor.value)) {
 						toBeProcessed.add(neighbor.value);
 					}
@@ -111,19 +117,19 @@ public class TestGraph {
 
 		System.out.println(graph);
 		System.out.println("BFS order Iterative=" + getBFSOrder(graph, "N1"));
-		System.out.println("BFS order Recursive="
-				+ getBFSOrderRecurse(graph, "N1"));
+		System.out.println(
+				"BFS order Recursive=" + getBFSOrderRecurse(graph, "N1"));
 
 		System.out.println("BFS order Iterative=" + getBFSOrder(graph, "N10"));
-		System.out.println("BFS order Recursive="
-				+ getBFSOrderRecurse(graph, "N10"));
+		System.out.println(
+				"BFS order Recursive=" + getBFSOrderRecurse(graph, "N10"));
 
 		System.out.println("DFS order Iterative=" + getDFSOrder(graph, "N1"));
-		System.out.println("DFS order Recursive="
-				+ getDFSOrderRecurse(graph, "N1"));
+		System.out.println(
+				"DFS order Recursive=" + getDFSOrderRecurse(graph, "N1"));
 
 		System.out.println("DFS order Iterative=" + getDFSOrder(graph, "N3"));
-		System.out.println("DFS order Recursive="
-				+ getDFSOrderRecurse(graph, "N3"));
+		System.out.println(
+				"DFS order Recursive=" + getDFSOrderRecurse(graph, "N3"));
 	}
 }

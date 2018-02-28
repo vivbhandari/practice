@@ -1,20 +1,19 @@
 package graph;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class GraphNode {
 
 	String value;
-	Set<GraphNode> neighbors;
+	HashMap<GraphNode, Integer> neighbors;
 
 	public GraphNode(String value) {
-		this(value, new HashSet<GraphNode>());
+		this(value, new HashMap<GraphNode, Integer>());
 	}
 
-	public GraphNode(String value, Set<GraphNode> neighbors) {
+	public GraphNode(String value, HashMap<GraphNode, Integer> neighbors) {
 		super();
 		this.value = value;
 		this.neighbors = neighbors;
@@ -22,7 +21,7 @@ public class GraphNode {
 
 	private List<String> getNeighborValues() {
 		List<String> neighborValues = new ArrayList<String>();
-		for (GraphNode node : neighbors) {
+		for (GraphNode node : neighbors.keySet()) {
 			neighborValues.add(node.value);
 		}
 		return neighborValues;

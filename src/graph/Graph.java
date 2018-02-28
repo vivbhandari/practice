@@ -11,11 +11,15 @@ public class Graph {
 		nodeMap.put(value, node);
 	}
 
-	public void connectNodes(String node1, String node2) {
+	public void connectNodes(String node1, String node2, int weight) {
 		GraphNode graphNode1 = nodeMap.get(node1);
 		GraphNode graphNode2 = nodeMap.get(node2);
-		graphNode1.neighbors.add(graphNode2);
-		graphNode2.neighbors.add(graphNode1);
+		graphNode1.neighbors.put(graphNode2, weight);
+		graphNode2.neighbors.put(graphNode1, weight);
+	}
+
+	public void connectNodes(String node1, String node2) {
+		this.connectNodes(node1, node2, 0);
 	}
 
 	public void disconnectNodes(String node1, String node2) {
@@ -25,16 +29,9 @@ public class Graph {
 		graphNode2.neighbors.remove(graphNode1);
 	}
 
-//	public void deleteNode(String value) {
-//		GraphNode removedNode = nodeMap.remove(value);
-//		for (GraphNode node : nodeMap.values()) {
-//			node.neighbors.remove(removedNode);
-//		}
-//	}
-
 	public void deleteNode(String value) {
 		GraphNode removedNode = nodeMap.remove(value);
-		for (GraphNode node : removedNode.neighbors) {
+		for (GraphNode node : removedNode.neighbors.keySet()) {
 			node.neighbors.remove(removedNode);
 		}
 	}
