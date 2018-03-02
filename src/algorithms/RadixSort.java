@@ -28,7 +28,7 @@ public class RadixSort {
 			count[i] += count[i - 1];
 		}
 
-		for (int i = 0; i < input.length; i++) {
+		for (int i = input.length -1; i >=0; i--) {
 			output[--count[(input[i] / exp) % 10]] = input[i];
 		}
 
@@ -38,8 +38,8 @@ public class RadixSort {
 	public static int[] radixSort(int[] input) {
 		int max = getMax(input);
 
-		for (int i = 1; max / i > 0; i++) {
-			input = countSort(input, i);
+		for (int exp = 1; max / exp > 0; exp *= 10) {
+			input = countSort(input, exp);
 		}
 
 		return input;
