@@ -23,7 +23,7 @@ public class CountingSort {
 			count[i] += count[i - 1];
 		}
 
-		for (int i = 0; i < input.length; i++) {
+		for (int i = input.length - 1; i >= 0; i--) {
 			output[--count[input[i]]] = input[i];
 		}
 

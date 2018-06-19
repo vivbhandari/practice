@@ -9,6 +9,10 @@ public class HelloWorld {
 
 		System.out.println("Hello World!");
 
+		System.out.println(Math.abs(-1));
+		System.out.println(Math.abs(Integer.MAX_VALUE));
+		System.out.println(Math.abs(Integer.MIN_VALUE));
+
 		int i = 1;
 		while (++i < 5)
 			;

@@ -15,6 +15,8 @@ public class MagicOf3 {
 	}
 
 	public static void main(String args[]) {
+		findNumberOfOnes(3);
+		System.out.println();
 		findNumberOfOnes(1313);
 	}
 }

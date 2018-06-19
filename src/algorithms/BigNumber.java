@@ -68,6 +68,9 @@ public class BigNumber {
 			}
 		}
 
+        while(output.charAt(0) == '0' && output.length() > 1)
+            output = output.substring(1);
+
 		return output;
 	}
 
