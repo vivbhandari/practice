@@ -37,6 +37,9 @@ public class LRUCache<K, V> {
 			lruNode.next.previous = lruNode.previous;
 		else
 			end = lruNode.previous;
+		
+		lruNode.next = null;
+		lruNode.previous = null;
 	}
 
 	public void set(K key, V value) {
