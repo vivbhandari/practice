@@ -30,7 +30,7 @@ public class LineIntersection {
 		Orientation o1 = getOrientation(line1.a, line1.z, line2.a);
 		Orientation o2 = getOrientation(line1.a, line1.z, line2.z);
 		Orientation o3 = getOrientation(line2.a, line2.z, line1.a);
-		Orientation o4 = getOrientation(line2.a, line2.z, line1.a);
+		Orientation o4 = getOrientation(line2.a, line2.z, line1.z);
 
 		if (o1 != o2 && o3 != o4)
 			return true;

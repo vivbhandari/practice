@@ -78,7 +78,7 @@ public class LongestCommonSubsequence {
 	}
 
 	public static void main(String args[]) {
-		System.out.println(findSubSequenceUniqueB("tables", "able"));
+		System.out.println(findSubSequenceUniqueB("tables", "able x"));
 		System.out.println(findSubSequence("tables are not fun", "not fun"));
 	}
 }
