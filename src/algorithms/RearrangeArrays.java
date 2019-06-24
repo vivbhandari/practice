@@ -15,6 +15,7 @@ public class RearrangeArrays {
 					String tmp = input[i + j];
 					input[i + j] = input[bIndex + j];
 					input[bIndex + j] = tmp;
+					System.out.println(Arrays.toString(input));
 				}
 				bIndex += (2 * numberOfSwaps);
 			}

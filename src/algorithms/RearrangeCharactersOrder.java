@@ -37,7 +37,7 @@ public class RearrangeCharactersOrder {
 		Arrays.sort(s1Array, s1Comparator);
 		output = Arrays.stream(s1Array).map(Object::toString)
 				.collect(Collectors.joining());
-
+		
 		return output;
 	}
 

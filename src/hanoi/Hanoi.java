@@ -49,7 +49,7 @@ public class Hanoi {
 	}
 
 	public static void main(String args[]) {
-		Hanoi hanoi = new Hanoi(5);
+		Hanoi hanoi = new Hanoi(4);
 		hanoi.play();
 	}
 }

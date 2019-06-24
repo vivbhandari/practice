@@ -50,7 +50,8 @@ public class QuickSort {
 
 	public static void quickSort(int[] input) {
 		// quickSortRecurse(input, 0, input.length - 1);
-		quickSortRecurse2(input, 0, input.length - 1);
+//		quickSortRecurse2(input, 0, input.length - 1);
+		quickSortRecurse3(input, 0, input.length - 1);
 	}
 
 	// this is simpler
@@ -60,7 +61,7 @@ public class QuickSort {
 			return;
 		}
 
-		int pivotIndex = start + (end - start) / 2;
+		int pivotIndex = (start + end) / 2;
 		System.out.println("pivotIndex=" + pivotIndex);
 
 		int index1 = start;
@@ -84,6 +85,26 @@ public class QuickSort {
 		}
 		quickSortRecurse2(input, start, index2);
 		quickSortRecurse2(input, index1, end);
+	}
+
+	//simplest
+	public static void quickSortRecurse3(int[] input, int start, int end) {
+		System.out.println("start="+start+", end="+end);
+		if (start < end) {
+			System.out.println("pivot="+input[end]);
+			int last = start;
+			for (int i = start; i <= end; i++) {
+				if (input[i] < input[end]) {
+					swap(input, i, last);
+					last++;
+					System.out.println(Arrays.toString(input));
+				}
+			}
+			swap(input, last, end);
+			System.out.println(Arrays.toString(input));
+			quickSortRecurse3(input, start, last - 1);
+			quickSortRecurse3(input, last + 1, end);
+		}
 	}
 
 	public static void main(String args[]) {

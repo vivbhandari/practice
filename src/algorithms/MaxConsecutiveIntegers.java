@@ -15,9 +15,7 @@ public class MaxConsecutiveIntegers {
 				while (inputSet.contains(++i)) {
 					curCount++;
 				}
-				if (curCount > count) {
-					count = curCount;
-				}
+				count = Math.max(curCount, count);
 			}
 		}
 
@@ -37,9 +35,7 @@ public class MaxConsecutiveIntegers {
 				curCount = 1;
 			}
 			prev = i;
-			if (curCount > count) {
-				count = curCount;
-			}
+			count = Math.max(curCount, count);
 		}
 
 		return count;
