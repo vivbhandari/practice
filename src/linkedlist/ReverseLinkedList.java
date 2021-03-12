@@ -2,17 +2,16 @@ package linkedlist;
 
 public class ReverseLinkedList {
 	public static LinkedNode reverse(LinkedNode head) {
-		LinkedNode newHead = null;
-		LinkedNode cur = head;
+		LinkedNode dummy = new LinkedNode(-1, head);
+		LinkedNode next = head.nextNode;
 
-		while (cur != null) {
-			LinkedNode tmp = newHead;
-			LinkedNode tmp2 = cur.nextNode;
-			newHead = cur;
-			cur.nextNode = tmp; 
-			cur = tmp2;
+		while (next != null) {
+			head.nextNode = next.nextNode;
+			next.nextNode = dummy.nextNode;
+			dummy.nextNode = next;
+			next = head.nextNode;
 		}
-		return newHead;
+		return dummy.nextNode;
 	}
 
 	public static void main(String args[]) {

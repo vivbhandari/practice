@@ -12,7 +12,7 @@ public class TargetSum {
 		int[] C = new int[] { 1, 2, 2, 2 };
 		int target = 7;
 		ArrayList<Integer> intermediateSums = new ArrayList<Integer>(B.length
-				+ C.length);
+				* C.length);
 		ArrayList<List<Integer>> results = new ArrayList<List<Integer>>();
 
 		for (int i = 0; i < B.length; i++) {

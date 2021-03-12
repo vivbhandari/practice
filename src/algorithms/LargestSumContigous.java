@@ -7,11 +7,8 @@ public class LargestSumContigous {
 		int currentSum = 0;
 
 		for (int i : input) {
-			currentSum += i;
-			if (currentSum < 0)
-				currentSum = 0;
-			if (maxSum < currentSum)
-				maxSum = currentSum;
+			currentSum = Math.max(0, currentSum += i);
+			maxSum = Math.max(maxSum, currentSum);
 		}
 		return maxSum;
 	}

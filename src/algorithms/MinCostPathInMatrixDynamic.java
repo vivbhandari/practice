@@ -12,8 +12,8 @@ public class MinCostPathInMatrixDynamic {
 
 		int n = 2;
 		while (n <= rows || n <= cols) {
-			int curCol = cols >= n ? cols - n : 0;
-			int curRow = rows >= n ? rows - n : 0;
+			int curCol = Math.max(cols - n,  0);
+			int curRow = Math.max(rows - n,  0);
 			if (cols >= n) {
 				for (int i = rows - 1; i > curRow; i--) {
 					int value1 = i == rows - 1 ? Integer.MAX_VALUE

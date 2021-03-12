@@ -34,6 +34,7 @@ public class NQueens {
 			if (existingCol == col
 					|| (Math.abs(existingCol - col) == Math.abs(i - row))) {
 				valid = false;
+				break;
 			}
 		}
 		return valid;

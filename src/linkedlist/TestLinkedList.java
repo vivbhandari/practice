@@ -3,7 +3,7 @@ package linkedlist;
 public class TestLinkedList {
 
 	static int counter = 0;
-
+	
 	private static LinkedNode reverse(LinkedNode cur, LinkedNode prev) {
 		LinkedNode newHead = null;
 		if (cur.nextNode == null) {
@@ -48,6 +48,23 @@ public class TestLinkedList {
 		return recurse(linkedList.head, n);
 	}
 
+	private static int recurse2(LinkedNode currentNode, int n) {
+		int pos = 0;
+		if (currentNode != null) {
+			pos = recurse2(currentNode.nextNode, n) + 1;
+			if (n == pos) {
+				targetNode = currentNode;
+			}
+		}
+		return pos;
+	}
+
+	static LinkedNode targetNode = null;
+	public static LinkedNode getFromEnd2(LinkedList linkedList, int n) {
+		recurse2(linkedList.head, n);
+		return targetNode;
+	}
+
 	public static LinkedNode getFromEndIterative(LinkedList linkedList, int n) {
 		LinkedNode nthNode = null;
 		LinkedNode currentNode = linkedList.head;
@@ -72,8 +89,6 @@ public class TestLinkedList {
 		}
 
 		System.out.println(linkedList);
-//		System.out.println(reverse(linkedList.head, null));
-		System.out.println(reverseItr(linkedList.head));
 //		System.out.println(linkedList.getLenght());
 //		System.out.println(linkedList.get(3));
 //		linkedList.delete(linkedList.get(3));
@@ -87,13 +102,20 @@ public class TestLinkedList {
 //		linkedList.add(new LinkedNode(0), 0);
 //		System.out.println(linkedList);
 //		System.out.println(getFromEnd(linkedList, 1));
-//		System.out.println(getFromEnd(linkedList, 3));
+		System.out.println(getFromEnd(linkedList, 3));
 //		System.out.println(getFromEnd(linkedList, 6));
 //		System.out.println(getFromEnd(linkedList, 8));
 //
 //		System.out.println(getFromEndIterative(linkedList, 1));
-//		System.out.println(getFromEndIterative(linkedList, 3));
+		System.out.println(getFromEndIterative(linkedList, 3));
 //		System.out.println(getFromEndIterative(linkedList, 6));
 //		System.out.println(getFromEndIterative(linkedList, 8));
-	}
+
+		System.out.println(getFromEnd2(linkedList, 3));
+
+		linkedList.head = reverse(linkedList.head, null);
+		System.out.println(linkedList);
+		linkedList.head = reverseItr(linkedList.head);
+		System.out.println(linkedList);
+}
 }

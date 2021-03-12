@@ -30,13 +30,21 @@ public class HeapSort {
 
 		int size = input.size();
 
-		for (int i = size / 2 - 1; i >= 0; i--) {
+		System.out.println(input);
+
+		System.out.println("-----");
+
+		for (int i = size/2 -1 ; i >= 0; i--) {
 			heapify(input, size, i);
+			System.out.println(input);
 		}
+
+		System.out.println("-----");
 
 		for (int i = size - 1; i >= 0; i--) {
 			swap(input, 0, i);
 			heapify(input, i, 0);
+			System.out.println(input);
 		}
 
 		return input;

@@ -20,16 +20,16 @@ public class ReverseSentence {
 	public static void reverseSentence(char[] sentence) {
 		int length = sentence.length;
 		reverse(sentence, 0, length - 1);
-		//System.out.println(new String(sentence));
+//		System.out.println(new String(sentence));
 		int startIndex = 0;
-		for (int i = 0; i < length; i++) {
-			if (sentence[i] == ' ') {
+		for (int i = 0; i <= length; i++) {
+			if (i == length || sentence[i] == ' ') {
 				reverse(sentence, startIndex, i - 1);
 				startIndex = i + 1;
 			}
 		}
-		if (startIndex < length)
-			reverse(sentence, startIndex, length - 1);
+//		if (startIndex < length)
+//			reverse(sentence, startIndex, length - 1);
 	}
 
 	public static void main(String args[]) {

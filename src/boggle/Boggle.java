@@ -8,6 +8,7 @@ public class Boggle {
 
 	HashSet<String> dictionary;
 	char[][] board;
+	static int iterations;
 
 	public Boggle(char[][] board, HashSet<String> dictionary) {
 		this.board = board;
@@ -16,6 +17,7 @@ public class Boggle {
 
 	private void findWordsRecurse(StringBuilder currentWord, int curRow,
 			int curCol, boolean[][] visited, Set<String> result) {
+		iterations++;
 		visited[curRow][curCol] = true;
 		currentWord.append(board[curRow][curCol]);
 
@@ -81,5 +83,6 @@ public class Boggle {
 
 		System.out
 				.println("Time taken=" + (System.currentTimeMillis() - start));
+		System.out.print("iterations="+iterations);
 	}
 }

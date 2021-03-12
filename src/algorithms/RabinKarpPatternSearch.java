@@ -35,7 +35,7 @@ public class RabinKarpPatternSearch {
 
 			if (i < textLen - patLen) {
 				int textHashWithoutFirst = textHash
-						- text.charAt(i) * topHash % primeNum;
+						- (text.charAt(i) * topHash) % primeNum;
 				textHash = (alphabetLen * textHashWithoutFirst
 						+ text.charAt(i + patLen)) % primeNum;
 

@@ -10,6 +10,7 @@ public class StringCombinations {
 	public static void calculateCombinations(String input) {
 		List<String> results = new ArrayList<String>();
 		recurse(input, 0, "", results);
+		System.out.println(results.size());
 		System.out.println(results);
 	}
 
@@ -52,7 +53,7 @@ public class StringCombinations {
 	}
 
 	public static void main(String[] args) {
-		calculateCombinations("XWZY");
+		calculateCombinations("WXYZ");
 //		calculateCombinationsLex("XWZY");
 	}
 }

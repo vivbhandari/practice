@@ -28,15 +28,15 @@ public class LRUCache<K, V> {
 	}
 
 	private void remove(LRUNode<K, V> lruNode) {
-		if (lruNode.previous != null)
-			lruNode.previous.next = lruNode.next;
-		else
+		if (lruNode == head)
 			head = lruNode.next;
-
-		if (lruNode.next != null)
-			lruNode.next.previous = lruNode.previous;
 		else
+			lruNode.previous.next = lruNode.next;
+
+		if (lruNode == end)
 			end = lruNode.previous;
+		else
+			lruNode.next.previous = lruNode.previous;
 		
 		lruNode.next = null;
 		lruNode.previous = null;
@@ -54,9 +54,9 @@ public class LRUCache<K, V> {
 				remove(end);
 			}
 			lruNode = new LRUNode<K, V>(key, value);
+			map.put(key, lruNode);
 		}
 		setHead(lruNode);
-		map.put(key, lruNode);
 	}
 
 	public V get(K key) {

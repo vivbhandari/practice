@@ -12,6 +12,10 @@ public class LineIntersection {
 		return false;
 	}
 
+	/*****
+	 * clockwise => dy1/dx1 > dy2/dx2
+	 *           => dy1*dx2 - dy2*dx1 > 0
+	 */
 	public Orientation getOrientation(Point point1, Point point2, Point point3) {
 
 		int slopeDiff = (point1.y - point2.y) * (point2.x - point3.x)

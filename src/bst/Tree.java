@@ -87,6 +87,30 @@ public class Tree {
 		return resultNode;
 	}
 
+	BSTNode head = null;
+
+	public BSTNode convertToDoubleLinklist() {
+		head = null;
+		BSTNode prev = helper(root, null);
+		head.leftChild = prev;
+		prev.rightChild = head;
+		return head;
+	}
+	
+	private BSTNode helper(BSTNode root, BSTNode prev) {
+		if (root != null) {
+			prev = helper(root.leftChild, prev);
+			if (prev == null)
+				head = root;
+			else {
+				root.leftChild = prev;
+				prev.rightChild = root;
+			}
+			prev = helper(root.rightChild, root);//root is new prev
+		}
+		return prev;
+	}
+
 	@Override
 	public String toString() {
 		return "Tree [root=" + root + "]";

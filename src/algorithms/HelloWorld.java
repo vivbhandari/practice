@@ -3,6 +3,9 @@ package algorithms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Base64;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class HelloWorld {
 	public static void main(String args[]) throws IOException {
@@ -13,12 +16,21 @@ public class HelloWorld {
 		System.out.println(Math.abs(Integer.MAX_VALUE));
 		System.out.println(Math.abs(Integer.MIN_VALUE));
 
+		Random random = ThreadLocalRandom.current();
+		byte[] randomBytes = new byte[4];
+		random.nextBytes(randomBytes);
+		System.out.println("bytes size: " + randomBytes.length);
+		String encoded = Base64.getUrlEncoder().encodeToString(randomBytes);
+		System.out.println("encoded size: " + encoded.length());
+		System.out.println("encoded: " + encoded.substring(0, 6));
+
 		int i = 1;
 		while (++i < 5)
 			;
 		System.out.println(i);
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(
+				new InputStreamReader(System.in));
 
 		System.out.println("Enter name:");
 		String name = br.readLine();
